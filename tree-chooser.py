@@ -50,6 +50,19 @@ def popsearch(baseurl,tree):
     else:
         print("no results")
         return None
+def avoid_riots(finalists):
+    favs=['Sequoiadendron giganteum','Rhizophora mangle,Ginkgo biloba','Hura crepitans','Taxus baccata','Sequoia sempervivens','Pinus longaeva','Ceiba petandra','Hippomane mancinella','Dracaena cinnabari','Juniperus virginiana','Dendrocnide moroides','Artocarpus heterophyllus','Litchi chinensis','Angiopteris evecta','Pyrus calleryana']
+    def findfavourites(finalists):
+        results=[]
+        for tree in favs:
+            results.append(tree in finalists[0:-15])
+            return results
+    results=findfavourites(finalists)
+    if not all(results):
+        finalists=finalists[0:-15]
+        return finalists.extend(favs)
+    else:
+        return finalists
 #TODO: add name==main
 #TODO: add a progress bar
     for tree in testlist:
@@ -62,7 +75,7 @@ print("\n"*3)
 finalists.sort(key=lambda x: x.popularity, reverse=True)
 print(len(finalists))
 finalists=finalists[0:64]
+finalists=avoid_riots(finalists)
 for tree in finalists:
     print(tree)
-#TODO: make damn sure the favourites are in the list
 #TODO: shuffle the list and write it to a new file
