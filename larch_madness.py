@@ -10,7 +10,6 @@ trees.seek(0)
 treelist=trees.read().splitlines()
 treelist=[tree.replace(" ","+").lower() for tree in treelist]
 trees.close()
-#this is only during debugging
 testlist=treelist
 baseurl="https://www.ncbi.nlm.nih.gov/pmc/?term=%22{}%22"
 finalists=[]
