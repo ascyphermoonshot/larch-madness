@@ -11,7 +11,7 @@ treelist=trees.read().splitlines()
 treelist=[tree.replace(" ","+").lower() for tree in treelist]
 trees.close()
 #this is only during debugging
-testlist=random.sample(treelist,20)
+testlist=treelist
 baseurl="https://www.ncbi.nlm.nih.gov/pmc/?term=%22{}%22"
 finalists=[]
 class Tree:
@@ -83,5 +83,5 @@ if __name__ == '__main__':
     random.shuffle(tfinalists)
     for tree in tfinalists:
         print(tree)
-    with open('testlist.txt', 'w') as f:
+    with open('final tree list.txt', 'w') as f:
         f.writelines("%s\n" % l for l in tfinalists)
